@@ -1,0 +1,16 @@
+venv/
+venv2/
+
+__pycache__
+*.egg-info/
+dist/
+build/
+
+*.pyc
+*.pyd
+*.so
+*.a
+
+_test*.py
+default.xpdfrc
+
