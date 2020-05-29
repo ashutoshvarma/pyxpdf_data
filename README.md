@@ -1,5 +1,5 @@
 # pyxpdf_data
-This python package consists of encoding files for use with pyxpdf.
+This python package consists of encoding files for use with [pyxpdf](https://github.com/ashutoshvarma/pyxpdf).
 The encoding files are taken from [poppler_data](https://gitlab.freedesktop.org/poppler/poppler-data) repo .
 It is optional and pyxpdf will automatically utilize them if module is install.
 
@@ -7,6 +7,10 @@ It is optional and pyxpdf will automatically utilize them if module is install.
 ```
 pip install pyxpdf_data
 ```
+
+### Why make seprate module for just encoding files ?
+I would love to ship them with pyxpdf but some of these files have different license
+than pyxpdf so we have to distribute them seprately.
 
 ## License
 While pyxpdf is licensed under the GPL, these encoding files have different 
