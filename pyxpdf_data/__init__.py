@@ -3,7 +3,7 @@ import time
 from distutils.sysconfig import get_python_lib
 from pathlib import Path
 
-__version__ = 1.0
+__version__ = '1.0.1'
 
 
 ROOT = Path(__file__).parent
