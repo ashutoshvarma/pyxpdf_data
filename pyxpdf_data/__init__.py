@@ -1,6 +1,6 @@
 import os
 import time
-import site
+from distutils.sysconfig import get_python_lib
 from pathlib import Path
 
 __version__ = 1.0
@@ -72,7 +72,7 @@ def get_poppler_dir():
 
 def get_xpdfrc():
     # TODO: add cache support
-    xpdfrc_path = Path(site.getsitepackages()[0], 'default.xpdfrc')
+    xpdfrc_path = Path(get_python_lib(), 'default.xpdfrc')
     xpdfrc = generate_xpdfrc()
     with open(xpdfrc_path, 'w') as fp:
         fp.write(xpdfrc)
