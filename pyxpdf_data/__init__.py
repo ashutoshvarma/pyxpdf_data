@@ -52,18 +52,11 @@ def _xpdfrc_header():
     ]
 
 
-def pyxpdf_defaults():
-    return ["# Default Settings for pyxpdf", "textEncoding UTF-8"]
-
-
 def generate_xpdfrc():
     xpdfrc = _xpdfrc_header()
 
     for entry in ["nameToUnicode", "cidToUnicode", "unicodeMap", "cMap"]:
         xpdfrc += _process_poppler_data(entry)
-
-    # add defaults
-    xpdfrc += pyxpdf_defaults()
 
     # add trailing newline
     xpdfrc.append("")
@@ -77,7 +70,7 @@ def get_poppler_dir():
 
 def get_xpdfrc():
     # TODO: add cache support
-    xpdfrc_path = Path(get_python_lib(), "default.xpdfrc")
+    xpdfrc_path = Path(get_python_lib(), "default.xpdf")
     xpdfrc = generate_xpdfrc()
     with open(xpdfrc_path, "w") as fp:
         fp.write(xpdfrc)
