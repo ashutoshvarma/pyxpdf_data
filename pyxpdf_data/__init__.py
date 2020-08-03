@@ -68,12 +68,21 @@ def get_poppler_dir():
     return str(POPPLER_DATA_DIR)
 
 
-def get_xpdfrc():
-    # TODO: add cache support
+def get_xpdfrc(force_rewrite=True):
+    """
+    Get the generated xpdfrc file path.
+
+    Parameters
+    ----------
+    force_rewrite: bool
+        generate xpdfrc again even if it exists already. Helpful if somehow xpdfrc file
+        got corrupted.
+    """
     xpdfrc_path = Path(get_python_lib(), "default.xpdf")
-    xpdfrc = generate_xpdfrc()
-    with open(xpdfrc_path, "w") as fp:
-        fp.write(xpdfrc)
+    if (not xpdfrc_path.exists()) or force_rewrite:
+        xpdfrc = generate_xpdfrc()
+        with open(xpdfrc_path, "w") as fp:
+            fp.write(xpdfrc)
     return str(xpdfrc_path.absolute())
 
 
