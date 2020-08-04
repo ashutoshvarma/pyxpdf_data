@@ -7,7 +7,7 @@ from .encodings import _get_encodings_block
 from .fonts import _get_fonts_block, get_fonts
 from .utils import POPPLER_DATA_DIR
 
-__version__ = "1.0.1"
+__version__ = "1.1.0"
 
 
 def _xpdfrc_header():

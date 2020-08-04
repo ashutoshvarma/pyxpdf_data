@@ -1,7 +1,7 @@
 from setuptools import setup
 
 # remember to bump the version in __init__.py also.
-VERSION = "1.0.1"
+VERSION = "1.1.0"
 
 with open("README.md", "r", encoding="utf-8") as fp:
     readme = fp.read()
