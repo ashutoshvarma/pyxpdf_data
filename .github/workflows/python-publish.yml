@@ -1,0 +1,57 @@
+# This workflows will upload a Python Package using Twine when a release is created
+# For more information see: https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions#publishing-to-package-registries
+
+name: Upload Python Package
+
+on:
+  push:
+    # Pattern matched against refs/tags
+    tags:        
+      - 'v*'           
+
+jobs:
+  deploy:
+    
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -U setuptools wheel twine -r test_requirements.txt
+    - name: Test
+      run: |
+        pip install .
+        pytest
+    - name: Build
+      run: |
+        python setup.py sdist bdist_wheel
+        ls -lah dist
+    - name: Get Tag name
+      run: echo "::set-env name=TAG_NAME::${HEAD_REF#refs/tags/}"
+      env:
+        HEAD_REF: ${{ github.ref }}
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      env: 
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ env.TAG_NAME }}
+        name: pyxpdf_data - Release ${{ env.TAG_NAME }}
+        draft: false
+        prerelease: false 
+        files: dist/*
+    - name: Build and publish
+      env:
+        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+      run: |
+        echo hi
+        # twine upload dist/*
