@@ -1,3 +1,6 @@
+![Python package](https://github.com/ashutoshvarma/pyxpdf_data/workflows/Python%20package/badge.svg)
+![PyPI](https://img.shields.io/pypi/v/pyxpdf_data)
+
 # pyxpdf_data
 This python package consists of encoding files for use with [pyxpdf](https://github.com/ashutoshvarma/pyxpdf).
 The encoding files are taken from [poppler_data](https://gitlab.freedesktop.org/poppler/poppler-data) repo .
