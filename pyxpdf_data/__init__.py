@@ -3,43 +3,11 @@ import time
 from distutils.sysconfig import get_python_lib
 from pathlib import Path
 
+from .encodings import _get_encodings_block
+from .fonts import _get_fonts_block, get_fonts
+from .utils import POPPLER_DATA_DIR
+
 __version__ = "1.0.1"
-
-
-ROOT = Path(__file__).parent
-POPPLER_DATA_DIR = Path(ROOT, "poppler_data")
-
-
-def _get_root_files(path):
-    return [x for x in Path(path).iterdir() if x.is_file()]
-
-
-def _get_root_dirs(path):
-    return [x for x in Path(path).iterdir() if x.is_dir()]
-
-
-def _process_poppler_data(entry):
-    lines = [
-        "# {0}".format(entry),
-    ]
-
-    if entry == "nameToUnicode":
-        for file in _get_root_files(Path(POPPLER_DATA_DIR, entry)):
-            lines.append('nameToUnicode "{0}"'.format(file.absolute()))
-    elif entry == "cidToUnicode":
-        for file in _get_root_files(Path(POPPLER_DATA_DIR, entry)):
-            lines.append('cidToUnicode {0} "{1}"'.format(file.name, file.absolute()))
-    elif entry == "unicodeMap":
-        for file in _get_root_files(Path(POPPLER_DATA_DIR, entry)):
-            lines.append('unicodeMap {0} "{1}"'.format(file.name, file.absolute()))
-    elif entry == "cMap":
-        for directory in _get_root_dirs(Path(POPPLER_DATA_DIR, entry)):
-            lines.append(
-                'cMapDir {0} "{1}"'.format(directory.name, directory.absolute())
-            )
-
-    lines.append(os.linesep)
-    return lines
 
 
 def _xpdfrc_header():
@@ -55,11 +23,8 @@ def _xpdfrc_header():
 def generate_xpdfrc():
     xpdfrc = _xpdfrc_header()
 
-    for entry in ["nameToUnicode", "cidToUnicode", "unicodeMap", "cMap"]:
-        xpdfrc += _process_poppler_data(entry)
-
-    # add trailing newline
-    xpdfrc.append("")
+    xpdfrc += _get_encodings_block()
+    xpdfrc += _get_fonts_block()
 
     return os.linesep.join(xpdfrc)
 
@@ -86,5 +51,5 @@ def get_xpdfrc(force_rewrite=True):
     return str(xpdfrc_path.absolute())
 
 
-if __name__ == "__main__":
-    print(get_xpdfrc())
+__all__ = [get_fonts, get_xpdfrc, get_poppler_dir, generate_xpdfrc]
+
