@@ -5,15 +5,12 @@ name: Upload Python Package
 
 on:
   push:
-    # Pattern matched against refs/tags
-    tags:        
-      - 'v*'           
+    tags:
+      - v*
 
 jobs:
   deploy:
-    
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
       with:
@@ -53,5 +50,4 @@ jobs:
         TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
-        echo hi
-        # twine upload dist/*
+        twine upload dist/*
