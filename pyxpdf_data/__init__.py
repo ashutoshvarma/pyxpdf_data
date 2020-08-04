@@ -46,10 +46,9 @@ def get_xpdfrc(force_rewrite=True):
     xpdfrc_path = Path(get_python_lib(), "default.xpdf")
     if (not xpdfrc_path.exists()) or force_rewrite:
         xpdfrc = generate_xpdfrc()
-        with open(xpdfrc_path, "w") as fp:
+        with open(str(xpdfrc_path), "w") as fp:
             fp.write(xpdfrc)
     return str(xpdfrc_path.absolute())
 
 
 __all__ = [get_fonts, get_xpdfrc, get_poppler_dir, generate_xpdfrc]
-
