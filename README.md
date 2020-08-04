@@ -20,5 +20,9 @@ license.
 The cidToUnicode, nameToUnicode and unicodeMap data files in the the poppler_data 
 folder are Copyright Glyph & Cog, LLC and are under the COPYING.gpl2 license.
 
+Fonts in fonts folder are released under the GNU Affero General Public License v3.0.
+Verbatim copies of the Ghostscript project's licensing info are included with this
+package see fonts/COPYING.affero
+
 The rest of module is licensed under MIT.
 

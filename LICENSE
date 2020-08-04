@@ -3,6 +3,15 @@ license.
 The cidToUnicode, nameToUnicode and unicodeMap data files in the the poppler_data 
 folder are Copyright Glyph & Cog, LLC and are under the COPYING.gpl2 license.
 
+The font and related files in this directory are distributed under the
+GNU AFFERO GENERAL PUBLIC LICENSE Version 3 (see the file COPYING.affero), with
+the following exemption:
+
+As a special exception, permission is granted to include these font
+programs in a Postscript or PDF file that consists of a document that
+contains text to be displayed or printed using this font, regardless
+of the conditions or license applying to the document itself.
+
 Rest of the module is licensed under the MIT License:
 
     Copyright (c) 2020 Ashutosh Varma

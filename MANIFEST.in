@@ -1,3 +1,4 @@
 include README.md LICENSE
 graft pyxpdf_data/poppler_data
+graft pyxpdf_data/fonts
 
