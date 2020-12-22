@@ -1,5 +1,5 @@
-![Python package](https://github.com/ashutoshvarma/pyxpdf_data/workflows/Python%20package/badge.svg)
-![PyPI](https://img.shields.io/pypi/v/pyxpdf_data)
+[![Python package](https://github.com/ashutoshvarma/pyxpdf_data/workflows/Python%20package/badge.svg)](https://github.com/ashutoshvarma/pyxpdf_data/actions)
+[![PyPI](https://img.shields.io/pypi/v/pyxpdf_data)](https://pypi.org/project/pyxpdf-data/)
 
 # pyxpdf_data
 This python package consists of encoding files for use with [pyxpdf](https://github.com/ashutoshvarma/pyxpdf).
