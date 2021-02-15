@@ -20,6 +20,7 @@ setup(
     author_email="ashutoshvarma11@live.com",
     url="https://github.com/ashutoshvarma/pyxpdf_data",
     license="MIT",
+    install_requires=["appdirs",],
     classifiers=[
         "Programming Language :: Python",
         "Programming Language :: Python :: 3.4",
