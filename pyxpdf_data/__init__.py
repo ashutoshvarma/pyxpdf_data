@@ -44,10 +44,7 @@ def get_xpdfrc(force_rewrite=True):
         got corrupted.
     """
     xpdfrc_path = Path(get_python_lib(), "default.xpdf")
-    if (not xpdfrc_path.exists()) or force_rewrite:
-        xpdfrc = generate_xpdfrc()
-        with open(str(xpdfrc_path), "w") as fp:
-            fp.write(xpdfrc)
+   
     return str(xpdfrc_path.absolute())
 
 
